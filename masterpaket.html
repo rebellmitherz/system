@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+  <title>Strategie-Analyse – Rebell mit Herz</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <main class="wrap">
+    <header>
+      <span class="step-label">Schritt 2: Analyse</span>
+      <h1 class="hero-title">Welches Dokument fehlt dir aktuell?</h1>
+      <p class="hero-subtitle">Wähle dein spezifisches Hindernis. Das System ermittelt die exakte Vorlage.</p>
+    </header>
+
+    <div class="progress-bar" style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; margin-bottom: 30px; overflow: hidden;">
+      <div id="pFill" style="width: 33%; height: 100%; background: #0066ff; box-shadow: 0 0 15px #0066ff; transition: width 0.6s ease;"></div>
+    </div>
+
+    <section id="quiz-container">
+      <form id="quizForm">
+        <div class="options" style="display: flex; flex-direction: column; gap: 15px;">
+          
+          <label class="review-card" style="display: flex; align-items: center; cursor: pointer; border-left: 3px solid #0066ff; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 12px;">
+            <input type="radio" name="product" value="akteneinsicht" style="margin-right: 15px; transform: scale(1.4);"> 
+            <span style="font-weight: 700; color: #fff;">Antrag auf Akteneinsicht (§ 50 SGB VIII)</span>
+          </label>
+
+          <label class="review-card" style="display: flex; align-items: center; cursor: pointer; border-left: 3px solid #0066ff; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 12px;">
+            <input type="radio" name="product" value="gutachten" style="margin-right: 15px; transform: scale(1.4);"> 
+            <span style="font-weight: 700; color: #fff;">Gutachter-Protokoll-Rüge</span>
+          </label>
+
+          <label class="review-card" style="display: flex; align-items: center; cursor: pointer; border-left: 3px solid #0066ff; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 12px;">
+            <input type="radio" name="product" value="protokoll" style="margin-right: 15px; transform: scale(1.4);"> 
+            <span style="font-weight: 700; color: #fff;">Gegendarstellung / Protokollberichtigung</span>
+          </label>
+
+          <label class="review-card" style="display: flex; align-items: center; cursor: pointer; border-left: 3px solid #0066ff; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 12px;">
+            <input type="radio" name="product" value="beschluss" style="margin-right: 15px; transform: scale(1.4);"> 
+            <span style="font-weight: 700; color: #fff;">Durchsetzung nach Beschluss</span>
+          </label>
+
+          <label class="review-card" style="display: flex; align-items: center; cursor: pointer; border-left: 3px solid #0066ff; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 12px;">
+            <input type="radio" name="product" value="beschleunigung" style="margin-right: 15px; transform: scale(1.4);"> 
+            <span style="font-weight: 700; color: #fff;">Beschleunigungsrüge (§ 155 FamFG)</span>
+          </label>
+
+          <label class="review-card" style="display: flex; align-items: center; cursor: pointer; border-left: 3px solid #8b0000; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 12px;">
+            <input type="radio" name="product" value="allgemein" style="margin-right: 15px; transform: scale(1.4);"> 
+            <span style="font-weight: 700; color: #fff;">Das komplette PRO-System (Alle Vorlagen)</span>
+          </label>
+          
+        </div>
+        
+        <button type="button" id="auswertenBtn" class="btn-large btn-primary" style="margin-top: 25px; width: 100%; cursor: pointer;">
+          Lösung generieren
+        </button>
+      </form>
+
+      <div id="loading-area" style="display: none; text-align: center; padding: 50px 0;">
+        <p style="font-weight: 800; color: #0066ff; text-transform: uppercase; letter-spacing: 1px;">Prüfe Paragraphen & erstelle Lösung...</p>
+      </div>
+    </section>
+
+    <footer>
+      <nav class="footer-nav">
+        <a href="index.html">← Zurück</a>
+      </nav>
+      <p class="copyright">© 2026 Rebell mit Herz</p>
+    </footer>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

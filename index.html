@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rebell mit Herz – Sofort-Schutz & Strategie</title>
+  <style>
+    :root {
+      --brand-red: #8b0000;
+      --brand-red-bright: #b30000;
+      --brand-blue: #0066ff;
+      --bg-dark: #0a0a0a;
+      --glass: rgba(255, 255, 255, 0.03);
+      --text-main: #fff;
+      --text-muted: #ccc;
+    }
+
+    * { box-sizing: border-box; }
+
+    body { 
+      background-color: var(--bg-dark); 
+      color: var(--text-main); 
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    .wrap {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .hero-title {
+      font-size: 2.2rem;
+      line-height: 1.1;
+      margin-bottom: 10px;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .hero-subtitle {
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      font-weight: 400;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .intro-content {
+      margin-bottom: 40px;
+      font-size: 1.05rem;
+    }
+
+    .intro-content p {
+      margin-bottom: 20px;
+      color: var(--text-muted);
+    }
+
+    .intro-content h2 {
+      font-size: 1.4rem;
+      color: #fff;
+      margin-bottom: 15px;
+      line-height: 1.3;
+      font-weight: 700;
+    }
+
+    .intro-content .name-highlight {
+      color: var(--brand-blue);
+      font-weight: 800;
+      display: block;
+      margin-top: 20px;
+    }
+
+    .copy-box { 
+      background: var(--glass); 
+      border: 2px dashed var(--brand-red);
+      padding: 30px 20px; 
+      margin: 30px 0; 
+      border-radius: 20px; 
+      position: relative;
+      z-index: 1;
+    }
+
+    .copy-text { 
+      font-family: 'Courier New', monospace; 
+      font-size: 1.25rem; 
+      color: #fff; 
+      display: block; 
+      margin-bottom: 25px; 
+      line-height: 1.4; 
+      text-align: center; 
+      font-weight: 700;
+    }
+
+    .btn-large { 
+      width: 100%; 
+      padding: 22px; 
+      font-size: 1.1rem; 
+      border-radius: 14px; 
+      text-decoration: none; 
+      display: block; 
+      text-align: center; 
+      font-weight: 900; 
+      margin-bottom: 12px;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      z-index: 10;
+    }
+
+    .btn-primary {
+      background: var(--brand-blue);
+      color: white;
+      box-shadow: 0 10px 30px rgba(0, 102, 255, 0.2);
+    }
+
+    .btn-white {
+      background: #fff;
+      color: #000;
+    }
+
+    .btn-copy-small {
+      display: block;
+      margin: 0 auto 15px auto;
+      padding: 10px 20px;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      border: 1px solid #444;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    /* Autoritäts-Sektion */
+    .authority-section {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 24px;
+      padding: 30px;
+      margin: 40px 0;
+    }
+
+    .authority-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .avatar-circle {
+      width: 60px;
+      height: 60px;
+      background: var(--brand-blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    .review-card {
+      background: rgba(255, 255, 255, 0.04);
+      padding: 25px;
+      border-radius: 18px;
+      border-left: 3px solid var(--brand-red);
+      margin-bottom: 20px;
+    }
+    .stars { color: #ffcc00; margin-bottom: 8px; font-size: 0.9rem; }
+    .review-text { font-style: italic; color: #ddd; line-height: 1.5; font-size: 0.95rem; }
+    .review-author { font-size: 0.8rem; color: var(--brand-blue); font-weight: 800; margin-top: 12px; display: block; }
+
+    .popup-small {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      width: 280px;
+      background: #1a1a1a;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-right: 4px solid var(--brand-red);
+      padding: 15px;
+      border-radius: 16px;
+      z-index: 10000;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .popup-small.active {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .popup-close {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      background: none;
+      border: none;
+      color: #555;
+      font-size: 1.2rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 5px;
+    }
+    .popup-close:hover { color: #fff; }
+
+    footer { margin-top: 80px; text-align: center; padding-bottom: 40px; }
+    .footer-nav a { color: #777; text-decoration: none; margin: 0 15px; font-size: 0.85rem; }
+
+    @media (max-width: 480px) {
+      .popup-small {
+        width: calc(100% - 30px);
+        right: 15px;
+        left: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    
+    <header>
+      <h1 class="hero-title">Sofort-Schutz für Eltern</h1>
+      <p class="hero-subtitle">
+        Aktenfeste Strategien bei Jugendamt, Gericht, Gutachten und Umgangsblockaden.
+      </p>
+    </header>
+
+    <div class="copy-box">
+      <p style="text-align: center; font-size: 0.8rem; margin-top: -15px; margin-bottom: 20px; color: var(--brand-red-bright); font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">
+        Schritt 1: Dein Schutz-Satz
+      </p>
+      <span class="copy-text" id="protectionSentence">"Ich bitte um eine schriftliche Bestätigung dieser Aussage inklusive Rechtsgrundlage."</span>
+      
+      <button id="copyBtnSmall" class="btn-copy-small" onclick="copyToClipboard()">TEXT KOPIEREN</button>
+
+      <a href="thank-you.html" class="btn-large btn-primary">
+        KOSTENLOS ZUM DOWNLOAD
+      </a>
+    </div>
+
+    <!-- Erweiterte Autoritäts-Sektion -->
+    <section class="authority-section">
+      <div class="authority-header">
+        <div class="avatar-circle">E</div>
+        <div>
+          <h3 style="margin:0; font-size: 1.1rem;">Emilio Allegro</h3>
+          <p style="margin:0; font-size: 0.8rem; color: var(--brand-blue); font-weight: 700; text-transform: uppercase;">Gründer von Rebell mit Herz</p>
+        </div>
+      </div>
+      <p style="font-size: 0.95rem; color: #bbb; margin-bottom: 0;">
+        "Ich weiß, wie es ist, zwischen Jugendamt, Familiengericht und Gutachten festzustecken. Ob Umgangsblockaden, HKÜ-Verfahren oder die existenzielle Angst bei drohendem Kindesentzug – Rebell mit Herz ist das System, das aus echtem Widerstand gegen Willkür entstanden ist, um deine Position rechtssicher zu verteidigen."
+      </p>
+    </section>
+
+    <section class="intro-content">
+      <h2>Wenn das System gegen dich arbeitet.</h2>
+      <p>
+        In hochkonflikthaften Verfahren entscheiden oft Nuancen in Berichten und Protokollen über die Zukunft deiner Familie. Ob es um die Durchsetzung von Beschlüssen oder die Abwehr falscher Anschuldigungen geht – Emotionen sind hier dein schlechtester Berater.
+      </p>
+      <p>
+        Ich teile hier Werkzeuge, mit denen du Willkür beendest und sicherstellst, dass deine Perspektive aktenkundig wird. Wer die Sprache des Systems versteht, wird vom Opfer zum aktiven Gestalter des Verfahrens.
+      </p>
+      <div style="font-size: 0.9rem; font-style: italic; color: #666; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; margin-top: 25px;">
+        Keine Rechtsberatung – sondern strategische Werkzeuge für Eltern in Ausnahmesituationen.
+      </div>
+    </section>
+
+    <section style="background: linear-gradient(165deg, rgba(0, 102, 255, 0.08) 0%, rgba(0, 0, 0, 0) 100%); padding: 35px 25px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.05); margin: 30px 0;">
+      <h3 style="margin-bottom: 12px; font-size: 1.6rem; font-weight: 800;">Beende die Hilflosigkeit</h3>
+      <p style="margin-bottom: 30px; font-size: 1.05rem; color: #aaa; line-height: 1.6;">
+        Wähle die passende Strategie für deine Lage: Von der Protokollkorrektur bis zur Abwehr von Manipulation in Gutachten.
+      </p>
+      <a href="masterpaket.html" class="btn-large btn-white">
+        ZUM STRATEGIE-FINDER
+      </a>
+    </section>
+
+    <section style="margin-top: 60px;">
+      <h3 style="text-align: center; margin-bottom: 30px; font-size: 1.1rem; color: #666; text-transform: uppercase; letter-spacing: 1px;">Stimmen aus der Gemeinschaft</h3>
+      
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Dank der Vorlagen konnte ich im HKÜ-Verfahren endlich die richtigen Sätze finden, um die Fakten auf den Tisch zu legen."</p>
+        <span class="review-author">Maren W., Berlin</span>
+      </div>
+
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Nach Monaten der Umgangsblockade haben mir die Formulierungen geholfen, das Gericht zum Handeln zu bewegen."</p>
+        <span class="review-author">Christian K., München</span>
+      </div>
+    </section>
+
+    <footer>
+      <nav class="footer-nav">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </nav>
+      <p style="font-size: 0.75rem; color: #555;">© 2025 Rebell mit Herz</p>
+    </footer>
+
+  </main>
+
+  <div id="absicherung-popup" class="popup-small">
+    <button class="popup-close" onclick="hidePopup()">×</button>
+    <p style="color: var(--brand-blue); font-weight: 800; font-size: 0.8rem; margin: 0 0 5px 0; text-transform: uppercase;">Wichtig</p>
+    <h4 style="margin: 0 0 10px 0; font-size: 1.1rem;">Vollständiger Schutz</h4>
+    <p style="color: #999; font-size: 0.85rem; margin-bottom: 15px; line-height: 1.4;">Sichere dir jetzt das System gegen Willkür und Kindesentzug.</p>
+    <a href="thank-you.html" class="btn-large btn-primary" style="padding: 12px; font-size: 0.85rem; margin-bottom: 0; background: var(--brand-red);">ZUM DOWNLOAD</a>
+  </div>
+
+  <script>
+    const popup = document.getElementById('absicherung-popup');
+    let popupShown = false;
+
+    function showPopup() {
+      if (!popupShown) {
+        popup.classList.add('active');
+        popupShown = true;
+      }
+    }
+
+    function hidePopup() { 
+      popup.classList.remove('active');
+    }
+
+    function copyToClipboard() {
+      const text = document.getElementById('protectionSentence').innerText;
+      const btn = document.getElementById('copyBtnSmall');
+      
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        btn.innerText = 'KOPIERT! ✓';
+        btn.style.background = '#1a5c2a';
+        setTimeout(() => {
+          btn.innerText = 'TEXT KOPIEREN';
+          btn.style.background = 'rgba(255,255,255,0.1)';
+        }, 2000);
+      } catch (err) {
+        console.error('Fehler beim Kopieren', err);
+      }
+      document.body.removeChild(textArea);
+    }
+
+    window.addEventListener('scroll', function() {
+      if (!popupShown && window.scrollY >= 500) { setTimeout(showPopup, 300); }
+    });
+  </script>
+</body>
+</html>
